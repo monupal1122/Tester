@@ -62,9 +62,9 @@ export const useSpeedTest = () => {
         return variance <= CONFIG.STABILITY_THRESHOLD;
     };
 
-    // ====== PING TEST ======
+  
     const runPingTest = async () => {
-        console.log('🏓 Testing latency...');
+        console.log(' Testing latency...');
         setPhase('ping');
         setProgress(0);
         const pings = [];
@@ -102,10 +102,10 @@ export const useSpeedTest = () => {
             jitter: finalJitter
         }));
 
-        console.log(`✅ Ping: ${finalPing}ms | Jitter: ${finalJitter}ms`);
+        console.log(` Ping: ${finalPing}ms | Jitter: ${finalJitter}ms`);
     };
 
-    // ====== ADAPTIVE DOWNLOAD TEST ======
+   
     const runDownloadTest = async () => {
         console.log('⬇️ Testing download speed (adaptive duration)...');
         setPhase('download');
@@ -233,7 +233,7 @@ export const useSpeedTest = () => {
         setProgress(100);
     };
 
-    // ====== ADAPTIVE UPLOAD TEST ======
+   
     const runUploadTest = async () => {
         console.log('⬆️ Testing upload speed (adaptive duration)...');
         setPhase('upload');
@@ -381,13 +381,11 @@ export const useSpeedTest = () => {
         setProgress(100);
     };
 
-    // ====== MAIN TEST RUNNER ======
+    
     const startTest = async () => {
         if (phase !== 'idle' && phase !== 'complete') return;
 
-        console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-        console.log('🚀 ADAPTIVE SPEED TEST STARTED');
-        console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+       
         
         reset();
         abortController.current = new AbortController();
@@ -404,11 +402,11 @@ export const useSpeedTest = () => {
             setPhase('complete');
             setProgress(100);
             
-            console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+         
             console.log('✅ TEST COMPLETE');
-            console.log(`📊 Download: ${results.download} Mbps`);
-            console.log(`📊 Upload: ${results.upload} Mbps`);
-            console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+            console.log(` Download: ${results.download} Mbps`);
+            console.log(` Upload: ${results.upload} Mbps`);
+            
             
         } catch (e) {
             if (e.name !== 'AbortError') {
